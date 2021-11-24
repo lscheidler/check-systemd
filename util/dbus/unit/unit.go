@@ -17,7 +17,6 @@ limitations under the License.
 package unit
 
 import (
-	"fmt"
 	"time"
 
 	"github.com/godbus/dbus"
@@ -86,7 +85,6 @@ func New(conn *dbus.Conn, unitName *string) (*Unit, error) {
 }
 
 func (u *Unit) GetProperty(path string) (dbus.Variant, error) {
-	fmt.Println(u.DbusObject.Path())
 	return u.DbusObject.GetProperty(path)
 }
 
@@ -95,7 +93,6 @@ func (u *Unit) GetPropertyString(path string) (string, error) {
 	if err != nil {
 		return "", err
 	}
-	fmt.Printf("%#v\n", property)
 	return property.Value().(string), nil
 }
 
